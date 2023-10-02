@@ -1,1 +1,134 @@
-[]
+[
+  {
+    "name": "1",
+    "time": "10/2/2023, 1:21:26 PM",
+    "scores": [
+      {
+        "animal": "dog",
+        "score": "35.71"
+      },
+      {
+        "animal": "rabbit",
+        "score": "28.57"
+      },
+      {
+        "animal": "cat",
+        "score": "21.43"
+      },
+      {
+        "animal": "fish",
+        "score": "14.29"
+      }
+    ]
+  },
+  {
+    "name": "2",
+    "time": "10/2/2023, 1:22:12 PM",
+    "scores": [
+      {
+        "animal": "fish",
+        "score": "33.33"
+      },
+      {
+        "animal": "cat",
+        "score": "25.00"
+      },
+      {
+        "animal": "dog",
+        "score": "25.00"
+      },
+      {
+        "animal": "rabbit",
+        "score": "16.67"
+      }
+    ]
+  },
+  {
+    "name": "3",
+    "time": "10/2/2023, 1:25:08 PM",
+    "scores": [
+      {
+        "animal": "cat",
+        "score": "0.00"
+      },
+      {
+        "animal": "dog",
+        "score": "0.00"
+      },
+      {
+        "animal": "rabbit",
+        "score": "0.00"
+      },
+      {
+        "animal": "fish",
+        "score": "0.00"
+      }
+    ]
+  },
+  {
+    "name": "4",
+    "time": "10/2/2023, 1:31:12 PM",
+    "scores": [
+      {
+        "animal": "dog",
+        "score": "35.71"
+      },
+      {
+        "animal": "rabbit",
+        "score": "28.57"
+      },
+      {
+        "animal": "cat",
+        "score": "21.43"
+      },
+      {
+        "animal": "fish",
+        "score": "14.29"
+      }
+    ]
+  },
+  {
+    "name": "benim",
+    "time": "10/2/2023, 3:02:56 PM",
+    "scores": [
+      {
+        "animal": "dog",
+        "score": "35.71"
+      },
+      {
+        "animal": "rabbit",
+        "score": "35.71"
+      },
+      {
+        "animal": "cat",
+        "score": "28.57"
+      },
+      {
+        "animal": "fish",
+        "score": "0.00"
+      }
+    ]
+  },
+  {
+    "name": "benim",
+    "time": "10/2/2023, 3:03:22 PM",
+    "scores": [
+      {
+        "animal": "dog",
+        "score": "35.71"
+      },
+      {
+        "animal": "rabbit",
+        "score": "28.57"
+      },
+      {
+        "animal": "cat",
+        "score": "21.43"
+      },
+      {
+        "animal": "fish",
+        "score": "14.29"
+      }
+    ]
+  }
+]
