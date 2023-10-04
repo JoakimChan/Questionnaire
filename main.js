@@ -3,35 +3,16 @@ const fs = require('fs');
 const quest = require('./questions.json');
 const result = require('./result.json');
 
-const jsonArray = [];
 let quit1 = false;
-let isEmpty = false;
 const animals = ['cat', 'dog', 'rabbit', 'fish'];
+const jsonArray = [];
 
-//reoad file
-const jsonData = fs.readFileSync('./result.json', 'utf-8', (err) => {
-  if (err) console.error('Error reading the JSON file: ', err)
-  return;
-});
-
-//cheack if the file is empty
-try {
-  JSON.parse(jsonData);
-  if (isObjectEmpty(jsonData)) {
-    console.log("file is empty");
-    isEmpty = true;
-  } else {
-    console.log("file is not empty")
-    for (let i = 0; i < result.length; i++) {
-      jsonArray.push(result[i])
-    }
-  }
-} catch (err) {
-  console.log(err);
+for (let i = 0; i < result.length; i++) {
+  jsonArray.push(result[i])
 }
 
 while (!quit1) {
-  let choice1 = prompt("1. köra formulärten    2. visa tidigare resultat     q. avsluta programet   svar: ").trim().toLocaleLowerCase();
+  let choice1 = prompt("1. köra formulärten    2. visa alla resultat     q. avsluta programet   svar: ").trim().toLocaleLowerCase();
   switch (choice1) {
     case '1':
       let quit2 = false;
@@ -45,8 +26,7 @@ while (!quit1) {
           let quit3 = false;
           do {
             console.log(quest[i].q);
-            let choice2 = ' ';
-            choice2 = prompt("y. ja    n. nej    q. sluta formuläret    svar: ").trim().toLocaleLowerCase();
+            let choice2 = prompt("y. ja    n. nej    q. sluta formuläret    svar: ").trim().toLocaleLowerCase();
             switch (choice2) {
               case 'y':
                 //caculate yes-points
@@ -69,7 +49,7 @@ while (!quit1) {
                 break;
               default:
                 //invalade value
-                console.log("valet finns inte!  1");
+                console.log("valet finns inte!");
             }
           } while (!quit3);
         }
@@ -102,9 +82,8 @@ while (!quit1) {
 
         let quit4 = false;
         do {
-          let playAgain = " ";
           //input 3
-          playAgain = prompt("1. kör formuläret igen     q. sluta spela     svar: ").trim().toLocaleLowerCase();
+          let playAgain = prompt("1. kör formuläret igen     q. sluta spela     svar: ").trim().toLocaleLowerCase();
           switch (playAgain) {
             case '1':
               quit4 = true;
@@ -115,7 +94,7 @@ while (!quit1) {
               break;
             default:
               //invalade value
-              console.log("valet finns inte! 2");
+              console.log("valet finns inte!");
           }
         } while (!quit4);
       } while (!quit2);
@@ -123,28 +102,25 @@ while (!quit1) {
       //write to the file
       fs.writeFile('./result.json', JSON.stringify(jsonArray, null, 2), (err) => {
         if (err) throw err;
-        console.log('Successfully wrote file');
+        console.log("Successfully wrote file");
       });
       break;
     case '2':
-      //display the result from the file
-      if (isEmpty == true) {
-        console.log("filen är tom!")
+      //display the result
+      if (jsonArray.length === 0) {
+        console.log("det finns inge tidigre resultater!")
       } else {
-        for (let i = 0; i < result.length; i++) {
-          console.log(result[i]);
+        for (let i = 0; i < jsonArray.length; i++) {
+          console.log(jsonArray[i]);
         }
       }
       break;
     case 'q':
+      //quit the program
       quit1 = true;
       break;
     default:
       //invalade value
       console.log("valet finns inte! 3")
   }
-}
-
-function isObjectEmpty(obj) {
-  return Object.keys(obj).length === 0;
 }
