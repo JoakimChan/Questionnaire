@@ -2,25 +2,22 @@ const prompt = require(`prompt-sync`)({ sigint: true });
 const fs = require('fs');
 const quest = require('./questions.json');
 const result = require('./result.json');
-const { log } = require('console');
 
-let jsonArray = [];
+const jsonArray = [];
 let quit1 = false;
 let isEmpty = false;
 const animals = ['cat', 'dog', 'rabbit', 'fish'];
 
-//read file
+//reoad file
 const jsonData = fs.readFileSync('./result.json', 'utf-8', (err) => {
-  if (err) {
-    console.error('Error reading the JSON file: ', err)
-  }
+  if (err) console.error('Error reading the JSON file: ', err)
   return;
 });
 
 //cheack if the file is empty
 try {
-  const data = JSON.parse(jsonData);
-  if (isObjectEmpty(data)) {
+  JSON.parse(jsonData);
+  if (isObjectEmpty(jsonData)) {
     console.log("file is empty");
     isEmpty = true;
   } else {
@@ -28,7 +25,6 @@ try {
     for (let i = 0; i < result.length; i++) {
       jsonArray.push(result[i])
     }
-
   }
 } catch (err) {
   console.log(err);
@@ -74,15 +70,12 @@ while (!quit1) {
               default:
                 //invalade value
                 console.log("valet finns inte!  1");
-                break;
             }
           } while (!quit3);
         }
 
         //caculate totalpoints
-        for (let i = 0; i < points.length; i++) {
-          totalPoint += points[i]
-        }
+        totalPoint = points.reduce((prev, curr) => prev + curr, 0)
 
         const scores = [];
         //add object in scores-array with animal name and score in percentage
@@ -97,16 +90,13 @@ while (!quit1) {
         //sort the score
         scores.sort((a, b) => b.score - a.score);
 
-        let currentTime = new Date();
-
-        console.log(`namn: ${name} datum: ${currentTime}`);
-        console.log(scores);
-
         let player = {
           'name': name,
-          'time': currentTime.toLocaleString(),
+          'time': new Date().toLocaleString(),
           'scores': scores
         };
+
+        console.log(player);
 
         jsonArray.push(player);
 
@@ -114,7 +104,7 @@ while (!quit1) {
         do {
           let playAgain = " ";
           //input 3
-          playAgain = prompt("1. kör formuläret igen     q. för att sluta     svar: ").trim().toLocaleLowerCase();
+          playAgain = prompt("1. kör formuläret igen     q. sluta spela     svar: ").trim().toLocaleLowerCase();
           switch (playAgain) {
             case '1':
               quit4 = true;
@@ -126,7 +116,6 @@ while (!quit1) {
             default:
               //invalade value
               console.log("valet finns inte! 2");
-              break;
           }
         } while (!quit4);
       } while (!quit2);
@@ -143,9 +132,7 @@ while (!quit1) {
         console.log("filen är tom!")
       } else {
         for (let i = 0; i < result.length; i++) {
-          console.log(`namn: ${result[i].name} datum: ${result[i].time}`);
-          for (let j = 0; j < result[i].scores.length; j++)
-            console.log(result[i].scores[j]);
+          console.log(result[i]);
         }
       }
       break;
@@ -155,7 +142,6 @@ while (!quit1) {
     default:
       //invalade value
       console.log("valet finns inte! 3")
-      break;
   }
 }
 
