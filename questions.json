@@ -1,6 +1,6 @@
 [
   {
-    "q": "gillar du vatten?",
+    "q": "do you like water?",
     "y": [
       0,
       1,
@@ -15,7 +15,7 @@
     ]
   },
   {
-    "q": "gillar du gräs?",
+    "q": "do you like grass",
     "y": [
       1,
       2,
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "q": "gillrar du frisk luft?",
+    "q": "Do you like fresh air??",
     "y": [
       2,
       2,
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "q": "gillar du vara ute?",
+    "q": "do you like being outside?",
     "y": [
       1,
       2,
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "q": "är du allergisk mot päls?",
+    "q": "Are you allergic to fur?",
     "y": [
       0,
       0,
@@ -75,7 +75,7 @@
     ]
   },
   {
-    "q": "gillar du uppmärksamhet?",
+    "q": "do you like attention?",
     "y": [
       1,
       2,
@@ -90,7 +90,7 @@
     ]
   },
   {
-    "q": "orkar du ta hand om ditt djur ofta",
+    "q": "can you take care of your animal often?",
     "y": [
       0,
       2,
@@ -105,37 +105,37 @@
     ]
   },
   {
-    "q": "orkar du städa undan ditt djur efter",
+    "q": "can you clean up after your animal?",
     "y": [
       2,
-      2,
-      1,
-      0
-    ],
-    "n": [
-      0,
-      0,
-      1,
-      2
-    ]
-  },
-  {
-    "q": "gillar du promenader?",
-    "y": [
-      1,
       2,
       1,
       0
     ],
     "n": [
       0,
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "q": "do you like walking?",
+    "y": [
+      1,
+      2,
+      1,
+      0
+    ],
+    "n": [
+      0,
       1,
       1,
       2
     ]
   },
   {
-    "q": "gillar du simma?",
+    "q": "do you like swimming?",
     "y": [
       0,
       1,
@@ -150,7 +150,7 @@
     ]
   },
   {
-    "q": "bor du i en lägenhet?",
+    "q": "you live in an apartment?",
     "y": [
       1,
       0,
@@ -165,7 +165,7 @@
     ]
   },
   {
-    "q": "bor du i ett hus?",
+    "q": "do you live in a house?",
     "y": [
       1,
       1,
@@ -180,7 +180,7 @@
     ]
   },
   {
-    "q": "bor du själv?",
+    "q": "do you live alone?",
     "y": [
       1,
       1,
@@ -195,7 +195,7 @@
     ]
   },
   {
-    "q": "är du rädd om dina möbler?",
+    "q": "Are you worried about your furniture??",
     "y": [
       0,
       0,
@@ -210,7 +210,7 @@
     ]
   },
   {
-    "q": "blir du lätt iritterad?",
+    "q": "you get easily irritated?",
     "y": [
       0,
       1,

@@ -1,1 +1,94 @@
-[]
+[
+  {
+    "bob": [
+      {
+        "time": "4/2/2024, 3:22:04 AM",
+        "scores": [
+          {
+            "animal": "dog",
+            "score": "30.43"
+          },
+          {
+            "animal": "cat",
+            "score": "26.09"
+          },
+          {
+            "animal": "rabbit",
+            "score": "23.91"
+          },
+          {
+            "animal": "fish",
+            "score": "19.57"
+          }
+        ]
+      },
+      {
+        "time": "4/2/2024, 3:22:38 AM",
+        "scores": [
+          {
+            "animal": "dog",
+            "score": "36.36"
+          },
+          {
+            "animal": "rabbit",
+            "score": "27.27"
+          },
+          {
+            "animal": "cat",
+            "score": "22.73"
+          },
+          {
+            "animal": "fish",
+            "score": "13.64"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "qwe": [
+      {
+        "time": "4/2/2024, 3:25:16 AM",
+        "scores": [
+          {
+            "animal": "dog",
+            "score": "35.71"
+          },
+          {
+            "animal": "fish",
+            "score": "28.57"
+          },
+          {
+            "animal": "rabbit",
+            "score": "21.43"
+          },
+          {
+            "animal": "cat",
+            "score": "14.29"
+          }
+        ]
+      },
+      {
+        "time": "4/2/2024, 3:25:39 AM",
+        "scores": [
+          {
+            "animal": "dog",
+            "score": "37.50"
+          },
+          {
+            "animal": "rabbit",
+            "score": "25.00"
+          },
+          {
+            "animal": "fish",
+            "score": "25.00"
+          },
+          {
+            "animal": "cat",
+            "score": "12.50"
+          }
+        ]
+      }
+    ]
+  }
+]
