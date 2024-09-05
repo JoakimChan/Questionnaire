@@ -1,93 +1,100 @@
-const prompt = require(`prompt-sync`)({ sigint: true });
-const fs = require('fs');
-const quest = require('./questions.json');
-const jsonArray = JSON.parse(fs.readFileSync('./result.json', 'utf-8'));
-const animals = ['cat', 'dog', 'rabbit', 'fish'];
+// Import necessary modules
+const prompt = require('prompt-sync')({ sigint: true }); // For user input
+const fs = require('fs'); // For file system operations
+const quest = require('./questions.json'); // Load questions from JSON file
+const jsonArray = JSON.parse(fs.readFileSync('./result.json', 'utf-8')); // Load previous results
+const animals = ['cat', 'dog', 'rabbit', 'fish']; // List of animals for scoring
 
-let main = false;
+let main = false; // Flag to control the main loop
 while (!main) {
+  // Prompt user for action
   let choice = prompt("1. run the form    2. show all results     q. exit the program   answer: ").trim().toLocaleLowerCase();
   switch (choice) {
     case '1':
-      theForm()
+      theForm(); // Run the form
       break;
     case '2':
-      displayResult()
+      displayResult(); // Display all results
       break;
     case 'q':
-      writeToJason()
+      writeToJason(); // Save results to file and exit
       main = true;
       break;
     default:
-      invaladeValue()
+      invaladeValue(); // Handle invalid choices
   }
 }
 
+// Function to run the form
 function theForm() {
-  let endTheForm = false;
+  let endTheForm = false; // Flag to control the form loop
   while (!endTheForm) {
-    let points = [0, 0, 0, 0];
-    let totalPoint = 0;
-    let name = prompt("name: ").trim().toLocaleLowerCase();
+    let points = [0, 0, 0, 0]; // Initialize points for each animal
+    let totalPoint = 0; // Total points
+    let name = prompt("name: ").trim().toLocaleLowerCase(); // Get user name
 
+    // Iterate through each question
     for (let i = 0; i < quest.length; i++) {
-      if (i === 'stop') { break; }
-      let answer = false;
+      if (i === 'stop') { break; } // Exit loop if 'stop' is encountered
+      let answer = false; // Flag for user answer
       while (!answer) {
-        console.log(quest[i].q);
+        console.log(quest[i].q); // Display question
         let choice2 = prompt("y. Yes    n. No    q. Stop the form    answer: ").trim().toLocaleLowerCase();
         switch (choice2) {
           case 'y':
-            //caculate yes-points
+            // Calculate points for 'Yes'
             for (let j = 0; j < points.length; j++) {
               points[j] += quest[i].y[j];
             }
             answer = true;
             break;
           case 'n':
-            //caculate no-points
+            // Calculate points for 'No'
             for (let j = 0; j < points.length; j++) {
               points[j] += quest[i].n[j];
             }
             answer = true;
             break;
           case 'q':
-            //break the for-loop
+            // Stop the form
             i = 'stop';
             answer = true;
             break;
           default:
-            invaladeValue()
+            invaladeValue(); // Handle invalid choices
         }
-      };
+      }
     }
 
-    caculateAndPunch(points, totalPoint, name)
+    // Calculate and display results
+    caculateAndPunch(points, totalPoint, name);
 
+    // Prompt user to either run the form again or close it
     let endForm = false;
     while (!endForm) {
       let playAgain = prompt("1. run the form again     q. close the forms     answer: ").trim().toLocaleLowerCase();
       switch (playAgain) {
         case '1':
-          endForm = true;
+          endForm = true; // Run the form again
           break;
         case 'q':
-          endTheForm = true;
+          endTheForm = true; // Exit the form
           endForm = true;
           break;
         default:
-          invaladeValue()
+          invaladeValue(); // Handle invalid choices
       }
-    };
-  };
+    }
+  }
 }
 
+// Function to calculate and display results
 function caculateAndPunch(points, totalPoint, name) {
-  //caculate totalpoints
-  totalPoint = points.reduce((prev, curr) => prev + curr, 0)
+  // Calculate total points
+  totalPoint = points.reduce((prev, curr) => prev + curr, 0);
 
   const scores = [];
-  //puch object into scores-array with animal name and score in percentage
+  // Prepare scores array with animal names and scores in percentage
   for (let i = 0; i < animals.length; i++) {
     if (points[i] <= 0) {
       scores[i] = { animal: animals[i], score: points[i].toFixed(2) };
@@ -96,10 +103,10 @@ function caculateAndPunch(points, totalPoint, name) {
     }
   }
 
-  //sort the score
+  // Sort scores in descending order
   scores.sort((a, b) => b.score - a.score);
 
-  //puch to arrey
+  // Update results in jsonArray
   if (jsonArray.find(player => Object.keys(player)[0] === name)) {
     const existingPlayer = jsonArray.find(player => Object.keys(player)[0] === name);
     existingPlayer[name].push({
@@ -115,13 +122,14 @@ function caculateAndPunch(points, totalPoint, name) {
     jsonArray.push(player);
   }
 
-  //console the result
+  // Display the result
   console.log(name + " : ");
   scores.forEach(scoreObject => {
     console.log(JSON.stringify(scoreObject));
   });
 }
 
+// Function to display all results
 function displayResult() {
   if (jsonArray.length === 0) {
     console.log("There are no previous results!");
@@ -131,7 +139,7 @@ function displayResult() {
         console.log(`${key} :`);
         if (jsonArray[i].hasOwnProperty(key)) {
           for (let j = 0; j < jsonArray[i][key].length; j++) {
-            console.log(`Time: ${jsonArray[i][key][j].time}`)
+            console.log(`Time: ${jsonArray[i][key][j].time}`);
             console.table(jsonArray[i][key][j].scores);
           }
         }
@@ -140,10 +148,12 @@ function displayResult() {
   }
 }
 
+// Function to handle invalid choices
 function invaladeValue() {
-  console.log("the choice does not exist!")
+  console.log("The choice does not exist!");
 }
 
+// Function to save results to file
 function writeToJason() {
   fs.writeFile('./result.json', JSON.stringify(jsonArray, null, 2), (err) => {
     if (err) throw err;
